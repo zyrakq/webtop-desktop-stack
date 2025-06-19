@@ -1,0 +1,21 @@
+services:
+  webtop:
+    container_name: webtop
+    image: linuxserver/webtop:arch-kde
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - TITLE=Webtop #optional
+      - DOCKER_MODS=linuxserver/mods:universal-package-install
+      - INSTALL_PACKAGES=git|glxgears
+    ports:
+      - 3000:3000
+      - 3001:3001
+    shm_size: "1gb" #optional
+    restart: unless-stopped
+    volumes:
+      - webtop-home:/config
+
+volumes:
+  webtop-home:

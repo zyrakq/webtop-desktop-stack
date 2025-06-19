@@ -1,0 +1,21 @@
+services:
+  arch-terminal:
+    container_name: arch-terminal
+    image: ghcr.io/linuxserver/baseimage-kasmvnc:arch
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - TITLE=Arch #optional
+      # - DOCKER_MODS=linuxserver/mods:universal-package-install
+      # - INSTALL_PACKAGES=git
+    ports:
+      - 3000:3000
+      - 3001:3001
+    shm_size: "1gb" #optional
+    restart: unless-stopped
+    volumes:
+      - arch-terminal-home:/config
+
+volumes:
+  arch-terminal-home:
